@@ -9,10 +9,28 @@ let output = document.getElementById('output');
 let actions = document.getElementById('actions');
 
 btn.addEventListener('click', function(){
-	/*socket.emit('chatMessage', {
-		username: username.value;
-		message: message.value;
-	});*/
-alert("hello");
+	//Emit the chat:message event
+	socket.emit('chat:message', {
+		"username": username.value,
+		"message": message.value
 
+	});
+	message.value = "";
+});
+
+message.addEventListener('keydown', function(){
+        socket.emit('chat:typing', username.value);
+});
+
+socket.on("chat:message", function (data) {
+	output.innerHTML += `<p>
+			<strong>${data.username}</strong>:<br>
+			${data.message}
+			</p>`;
+});
+
+socket.on("chat:typing", function (data) {
+        actions.innerHTML = `<p>
+                        	${data} is typing
+			</p>`;
 });

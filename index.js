@@ -29,8 +29,14 @@ const io = SocketIO(server);
 io.on('connection', (socket) => {
 	console.log("new connection: ", socket.id);
 
-	socket.on('chatMessage', (data) =>{
-		console.log(data);
+	//Listen to the chat:message event
+	socket.on('chat:message', (data) =>{
+		//Emit the event chat:messagr
+		io.sockets.emit("chat:message", data);
 	});
+
+	socket.on('chat:typing', (data) =>{
+                socket.broadcast.emit("chat:typing", data);
+        });
 
 });
