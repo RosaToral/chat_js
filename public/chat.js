@@ -23,6 +23,7 @@ message.addEventListener('keydown', function(){
 });
 
 socket.on("chat:message", function (data) {
+	actions.innerHTML = "";
 	output.innerHTML += `<p>
 			<strong>${data.username}</strong>:<br>
 			${data.message}
