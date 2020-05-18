@@ -7,6 +7,7 @@ let username = document.getElementById('username');
 let btn = document.getElementById('send');
 let output = document.getElementById('output');
 let actions = document.getElementById('actions');
+let welcome = document.getElementById('welcome');
 
 btn.addEventListener('click', function(){
 	//Emit the chat:message event
@@ -34,4 +35,10 @@ socket.on("chat:typing", function (data) {
         actions.innerHTML = `<p>
                         	${data} is typing
 			</p>`;
+});
+
+socket.on("scraping", function (data) {
+	//for(var i=0; i<data.length; i++){
+		welcome.innerHTML = `${data}`;
+	//}
 });
