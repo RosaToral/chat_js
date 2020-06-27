@@ -8,6 +8,9 @@ const cheerio = require("cheerio");
 const fs = require("fs");
 const request = require("request");
 
+//web scraping con axios
+const fetch = require("node-fetch");
+
 //Se guarda un objeto de la librería
 const app = express();
 
@@ -38,7 +41,7 @@ const images = [];
 //err: guarda los errores
 //res: guarda la respuesta del servidor
 //body: guarda el cuerpo html de la pagina solicitada
-request("http://comunitaria.izt.uam.mx/EspacioVirtual/menu.html", (err, res, body) => {
+/*request("http://comunitaria.izt.uam.mx/EspacioVirtual/menu.html", (err, res, body) => {
 	//si no hay errores y el servidor respondio bien
 	if(!err && res.statusCode == 200){
 		let $ = cheerio.load(body);
@@ -56,10 +59,43 @@ request("http://comunitaria.izt.uam.mx/EspacioVirtual/menu.html", (err, res, bod
 	} else {
 		console.log(res.statusCode);
 	}
-});
+});*/
+
+const checkStatus = res => {
+	if (res.ok) {
+		// res.status >= 200 && res.status < 300
+		return res;
+	} else {
+		throw console.log(res.statusText);
+	}
+}
+
+//web scrapping con axios
+(async ()=>{
+	let response = await fetch("https://www.gob.mx/sct/es/articulos/lleva-contigo-los-numeros-de-emergencia");
+	//console.log(response);
+
+	try{
+		const data = checkStatus(response);
+	} catch (error) {
+		console.log(error);
+	}
+	let body = await response.text();
+	let $ = cheerio.load(body);
+	//busca las etiquetas a dentro del contenedor siteTab>
+	let contenido = $("ul");
+	contenido.each( function (){
+		//guarda el atributo href en la variable url >
+		var url = $(this).html();//attr("src");
+		var name = $(this).attr("id");
+		images.push(url);
+	});
+
+})();
 
 //comprobar que alguien está conectado
 io.on('connection', (socket) => {
+	//init();
 	console.log("new connection: ", socket.id);
 	//Web scraping
 //	console.log(images);
