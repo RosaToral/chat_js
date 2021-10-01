@@ -37,7 +37,7 @@ const io = SocketIO(server);
 
 const images = [];
 
-//se hace una peticion tipo http con request
+//Se hace una peticion tipo http con request
 //err: guarda los errores
 //res: guarda la respuesta del servidor
 //body: guarda el cuerpo html de la pagina solicitada
