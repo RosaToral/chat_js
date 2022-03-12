@@ -9,7 +9,7 @@ const fs = require("fs");
 const request = require("request");
 
 //web scraping con axios
-const fetch = require("node-fetch");
+//const fetch = require("node-fetch");
 
 //Se guarda un objeto de la librería
 const app = express();
@@ -70,9 +70,10 @@ const checkStatus = res => {
 	}
 }
 
+/*
 //web scrapping con axios
 (async ()=>{
-	let response = await fetch("https://www.gob.mx/sct/es/articulos/lleva-contigo-los-numeros-de-emergencia");
+	let response = await import('node-fetch').then("https://www.gob.mx/sct/es/articulos/lleva-contigo-los-numeros-de-emergencia");
 	//console.log(response);
 
 	try{
@@ -92,6 +93,7 @@ const checkStatus = res => {
 	});
 
 })();
+*/
 
 //comprobar que alguien está conectado
 io.on('connection', (socket) => {
