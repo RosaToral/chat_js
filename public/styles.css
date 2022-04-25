@@ -5,12 +5,12 @@ body{
 }
 
 .container{
-		width: 50%;
-		margin: auto;
-		background-color: #fcd0ee;
-		margin-top: 20px;
-		padding: 20px;
-		border-radius: 10px
+	width: 50%;
+	margin: auto;
+	background-color: #fcd0ee;
+	margin-top: 20px;
+	padding: 20px;
+	border-radius: 10px
 }
 
 .window{

@@ -1,22 +1,25 @@
 {
   "name": "chat_js",
-  "version": "1.0.0",
-  "description": "",
+  "version": "2.0.0",
+  "description": "Aplicación web. Sala de chat simple",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
-  "keywords": [],
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RosaToral/chat_js.git"
+  },
+  "author": "RosaToral",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RosaToral/chat_js/issues"
+  },
+  "homepage": "https://github.com/RosaToral/chat_js#readme",
   "dependencies": {
-    "cheerio": "^1.0.0-rc.10",
     "express": "^4.17.3",
-    "node-fetch": "^3.2.3",
-    "request": "^2.88.2",
-    "request-promise": "^4.2.5",
-    "socket.io": "^4.4.1"
+    "socket.io": "^4.5.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
