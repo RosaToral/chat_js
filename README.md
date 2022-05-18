@@ -1,7 +1,5 @@
 # chat_js
 
-## Deendencias
-
 Esta es una aplicación simple de una sala de chat creado con Nodejs.
 
 Esta app puede ser usada en una computadora o puede utilizarse un contenedor de Docker.
