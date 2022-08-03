@@ -2,7 +2,7 @@ const SocketIO = require("socket.io");
 const express = require("express");
 const path = require("path");
 
-const {socketService} = require('./services/chat.service');
+const { socketService } = require('./services/chat.service');
 
 const app = express();
 app.use(express.json());
